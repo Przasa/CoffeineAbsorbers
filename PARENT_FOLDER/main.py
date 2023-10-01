@@ -14,7 +14,7 @@ def main():
     flappy_iface.StartFlappy()
     
     hrate_iface.StartMeasure()
-    read_hrate(duration=3,frequency=5)
+    read_hrate(duration=10,frequency=5)
     hrate_iface.StopMeasure()
 
 def read_hrate(duration=5,frequency=1):
