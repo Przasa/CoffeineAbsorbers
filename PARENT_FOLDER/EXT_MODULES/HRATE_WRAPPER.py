@@ -20,21 +20,21 @@ class HrateInterface:
     def __init__(self) -> None:
         pass
 
-    def StartMeasure(self):
+    def StartMeasure_fake(self):
         HrateInterface.is_running = True
-        self.measure_thread = threading.Thread(target=self._measure,args=(shared_data.data_queue,))
+        self.measure_thread = threading.Thread(target=self._measure_fake,args=(shared_data.data_queue,))
         self.measure_thread.start()
 
-    def StopMeasure(self):
+    def StopMeasure_fake(self):
         HrateInterface.is_running = False
 
-    def toggleMeasure(self):
+    def toggleMeasure_fake(self):
         if HrateInterface.is_running :
-            self.StopMeasure()
+            self.StopMeasure_fake()
         else:
-            self.StartMeasure()
+            self.StartMeasure_fake()
 
-    def _measure(self,data_queue,frequency=5):
+    def _measure_fake(self,data_queue,frequency=5):
         print("MEASURING STARTED")
         # global SHARED_VAL
         while HrateInterface.is_running:
@@ -44,7 +44,6 @@ class HrateInterface:
             data_queue.put(hrate)
             # print("HRATE saved: ",hrate)
             time.sleep(1/frequency)
-            
         print("MEASURING STOPPED")
 
 
@@ -54,13 +53,13 @@ class HrateInterface:
 if __name__ == "__main__":
     hrate = HrateInterface()
     
-    hrate.StartMeasure()
+    hrate.StartMeasure_fake()
     time.sleep(2)
-    hrate.StopMeasure()
+    hrate.StopMeasure_fake()
     time.sleep(1)
-    hrate.StartMeasure()
+    hrate.StartMeasure_fake()
     time.sleep(2)
-    hrate.StopMeasure()
+    hrate.StopMeasure_fake()
 
 
 
