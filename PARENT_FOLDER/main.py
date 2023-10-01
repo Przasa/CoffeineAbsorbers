@@ -18,7 +18,7 @@ def main():
     coffe_iface.StartMeasure()
 
     hrate_iface.StartMeasure_fake()
-    read_hrate(duration=10,frequency=5)
+    # read_hrate(duration=10,frequency=5)
     read_hrate(duration=np.inf)
     # hrate_iface.StopMeasure_fake()
  
@@ -29,16 +29,20 @@ def read_hrate(duration=5,frequency=1):
         while True:
             try:
                 data_from_thread = shared_data.data_queue.get(block=False)  # Non-blocking get
-                print("Received:", data_from_thread)
+                print("Received HR: {:2f}".format(data_from_thread))
             except queue.Empty:
                 print("No data in the queue.")
             time.sleep(1/frequency)
+                
+
+
     else:
 
         for _ in range(duration*frequency):
             try:
                 data_from_thread = shared_data.data_queue.get(block=False)  # Non-blocking get
-                print("Received:", data_from_thread)
+                print("Received HR: {:2f} ".format(data_from_thread))
+
             except queue.Empty:
                 print("No data in the queue.")
             time.sleep(1/frequency)  # Sleep for a while to avoid busy-waiting
