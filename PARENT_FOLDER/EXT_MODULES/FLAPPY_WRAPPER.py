@@ -1,23 +1,26 @@
-# add "Flappy-bird-python" folder to path
 import sys, os
-# sys.path.append(os.path.abspath('Flappy-bird-python'))
+import threading
 
-
+from EXT_MODULES.Flappy_bird_python import flappy
 
 # sys.path.append('..') # method 1
 # os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # sys.path.append('Flappy_bird_python')
 
-from EXT_MODULES.Flappy_bird_python import flappy
 
+class FlappyInterface:
+
+    def __init__(self) -> None:
+        pass
 # chdir to current folder
 
 # import flappy
 
-def start():
+    def StartFlappy(self):
+        flappy_thread = threading.Thread(target=flappy.lauch_game)
+        flappy_thread.start()
 
-    # flappy.start_game()
-    flappy.lauch_game()
 
 if __name__ == "__main__":
-    start()
+    flappy_iface = FlappyInterface()
+    flappy_iface.StartFlappy()

@@ -5,19 +5,15 @@ import os,sys
 import SHARED_MODULES.shared_data as shared_data
 import EXT_MODULES.dummy as dummy
 from EXT_MODULES.HRATE_WRAPPER import HrateInterface
-import EXT_MODULES.FLAPPY_WRAPPER as flappy_wrapper
+from EXT_MODULES.FLAPPY_WRAPPER import FlappyInterface
 
 def main():
-    shared_data.print_value()
-    dummy.print_dummies()
-
-    # os.chdir("PARENT_FOLDER\\EXT_MODULES\\Flappy_bird_python")
-    flappy_wrapper.start()
-
+    flappy_iface = FlappyInterface()
     hrate_iface = HrateInterface()
     
+    flappy_iface.StartFlappy()
+    
     hrate_iface.StartMeasure()
-    # time.sleep(3)
     read_hrate(duration=3,frequency=5)
     hrate_iface.StopMeasure()
 
