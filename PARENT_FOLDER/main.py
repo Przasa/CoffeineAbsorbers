@@ -17,9 +17,9 @@ def main():
     
     coffe_iface.StartMeasure()
 
-    hrate_iface.StartMeasure_fake()
+    # hrate_iface.StartMeasure_fake()
     # read_hrate(duration=10,frequency=5)
-    read_hrate(duration=np.inf)
+    # read_hrate(duration=np.inf)
     # hrate_iface.StopMeasure_fake()
  
 
